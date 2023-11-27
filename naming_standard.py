@@ -61,7 +61,7 @@ if file_type_selection == "蓝电高精度通道":
                 #df.to_csv(f'processed_{2}.txt', index=False, sep='\t')
 
             elif uploaded_file.name.endswith('.txt'):
-                df = pd.read_csv(uploaded_file, sep='\t', encoding='cp1252')
+                df = pd.read_csv(uploaded_file, sep='\t', encoding='gbk')
                 keywords_to_replace = {
                 "静置": "R",
                 "恒流充电": "CCC",
@@ -123,7 +123,7 @@ elif file_type_selection == "蓝电普通精度通道":
                 #df.to_csv(f'processed_{1}', index=False)
 
             elif uploaded_file.name.endswith('.txt'):
-                df = pd.read_csv(uploaded_file, sep='\t', encoding='cp1252')
+                df = pd.read_csv(uploaded_file, sep='\t', encoding='gbk')
                 column_name_mapping = {
                 "循环序号": "Cycle number",
                 "工步序号": "Step number",
