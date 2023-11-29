@@ -5,7 +5,6 @@ import io
 import chardet
  
 st.title("数据规范处理平台")
-st.title('s')
 # User inputs for file name
 user_name = st.text_input("Enter your name")
 date_input = st.text_input("Enter date (yyyymmdd)", datetime.now().strftime("%Y%m%d"))
