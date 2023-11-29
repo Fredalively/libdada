@@ -12,11 +12,11 @@ date_input = st.text_input("Enter date (yyyymmdd)", datetime.now().strftime("%Y%
 material = st.text_input("Enter positive electrode material")
 remark = st.text_input("Enter remarks")
 batterynumber = st.text_input("Enter battery number")
-file_base_name = f"{user_name}_{date_input}_{material}_{remark}_TestData{batterynumber}"
+file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
 
 # Desired column order
 desired_order = ["Cycle number", "Test time", "Step time", "Step number",
-                 "Battery state", "Current/A", "Voltage/V", "System time", "Capacity/Ah"]
+                 "Battery state", "Current/mA", "Voltage/V", "System time", "Capacity/mAh"]
 
 # File type selection
 file_type_selection = st.radio("Select file type", ("蓝电高精度通道", "蓝电普通精度通道"))
@@ -51,12 +51,14 @@ if file_type_selection == "蓝电高精度通道":
                 "步骤时间": "Step time",
                 "测试时间": "Test time",
                 "电压/V": "Voltage/V",
-                "电流/A": "Current/A",
-                "容量/Ah": "Capacity/Ah",
+                "电流/A": "Current/mA",
+                "容量/Ah": "Capacity/mAh",
                 "系统时间": "System time"
                 }
                 df.rename(columns=column_name_mapping, inplace=True)
                 df = keep_and_reorder_columns(df, desired_order)
+                df['Current/mA'] = df['Current/mA'] * 1000
+                df['Capacity/mAh'] = df['Capacity/mAh'] * 1000
 
                 #df.to_csv(f'processed_{2}.txt', index=False, sep='\t')
 
@@ -77,12 +79,14 @@ if file_type_selection == "蓝电高精度通道":
                 "步骤时间": "Step time",
                 "测试时间": "Test time",
                 "电压/V": "Voltage/V",
-                "电流/A": "Current/A",
-                "容量/Ah": "Capacity/Ah",
+                "电流/A": "Current/mA",
+                "容量/Ah": "Capacity/mAh",
                 "系统时间": "System time"
                 }
                 df.rename(columns=column_name_mapping, inplace=True)
                 df = keep_and_reorder_columns(df, desired_order)
+                df['Current/mA'] = df['Current/mA'] * 1000
+                df['Capacity/mAh'] = df['Capacity/mAh'] * 1000
 
             download_button_key = f"download_button_{i}_{file_base_name}"    
             if format_choice == 'CSV':
@@ -114,12 +118,14 @@ elif file_type_selection == "蓝电普通精度通道":
                 "步骤时间": "Step time",
                 "测试时间": "Test time",
                 "电压/V": "Voltage/V",
-                "电流/A": "Current/A",
-                "容量/Ah": "Capacity/Ah",
+                "电流/A": "Current/mA",
+                "容量/Ah": "Capacity/mAh",
                 "系统时间": "System time"
                 }
                 df.rename(columns=column_name_mapping, inplace=True)
                 df = keep_and_reorder_columns(df, desired_order)
+                df['Current/mA'] = df['Current/mA'] * 1000
+                df['Capacity/mAh'] = df['Capacity/mAh'] * 1000
                 #df.to_csv(f'processed_{1}', index=False)
 
             elif uploaded_file.name.endswith('.txt'):
@@ -131,12 +137,14 @@ elif file_type_selection == "蓝电普通精度通道":
                 "步骤时间": "Step time",
                 "测试时间": "Test time",
                 "电压/V": "Voltage/V",
-                "电流/A": "Current/A",
-                "容量/Ah": "Capacity/Ah",
+                "电流/A": "Current/mA",
+                "容量/Ah": "Capacity/mAh",
                 "系统时间": "System time"
                 }
                 df.rename(columns=column_name_mapping, inplace=True)
                 df = keep_and_reorder_columns(df, desired_order)
+                df['Current/mA'] = df['Current/mA'] * 1000
+                df['Capacity/mAh'] = df['Capacity/mAh'] * 1000
                 #df.to_csv(f'processed_{1}.txt', index=False, sep='\t')
 
             download_button_key = f"download_button_{i}_{file_base_name}" 
