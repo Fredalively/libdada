@@ -33,8 +33,17 @@ def keep_and_reorder_columns(dataframe, column_order):
 
 if file_type_selection == "蓝电高精度通道":
     uploaded_files = st.file_uploader("Choose an Excel or txt file", type=['xlsx','txt'], accept_multiple_files=True)
-    if uploaded_files:
+    if uploaded_files：
         for i, uploaded_file in enumerate(uploaded_files):
+            if (user_name == "MSY (for Ma Siyue)" and
+                date_input == datetime.now().strftime("%Y%m%d-%H") and
+                material == "LFP" and
+                remark == "RetiredBattery" and
+                batterynumber == "#1"):
+                file_base_name = f'modified_{uploaded_file.name}'
+            else:
+                file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
+             
             if uploaded_file.name.endswith('.xlsx'):
                 df = pd.read_excel(uploaded_file)
                 keywords_to_replace = {
@@ -89,14 +98,6 @@ if file_type_selection == "蓝电高精度通道":
                 df['Current/mA'] = df['Current/mA'] * 1000
                 df['Capacity/mAh'] = df['Capacity/mAh'] * 1000
 
-           if (user_name == "MSY (for Ma Siyue)" and
-                date_input == datetime.now().strftime("%Y%m%d-%H") and
-                material == "LFP" and
-                remark == "RetiredBattery" and
-                batterynumber == "#1"):
-                file_base_name = f'modified_{uploaded_file.name}'
-            else:
-                file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
             download_button_key = f"download_button_{i}_{file_base_name}"    
             if format_choice == 'CSV':
                         #df.to_csv(f'{file_base_name}.csv', index=False)
@@ -118,6 +119,14 @@ elif file_type_selection == "蓝电普通精度通道":
     uploaded_files = st.file_uploader("Choose an Excel or txt file", type=['xlsx','txt'],accept_multiple_files=True)
     if uploaded_files:
         for i,uploaded_file in enumerate(uploaded_files):
+            if (user_name == "MSY (for Ma Siyue)" and
+                date_input == datetime.now().strftime("%Y%m%d-%H") and
+                material == "LFP" and
+                remark == "RetiredBattery" and
+                batterynumber == "#1"):
+                file_base_name = f'modified_{uploaded_file.name}'
+            else:
+                file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
             if uploaded_file.name.endswith('.xlsx'):
                 df = pd.read_excel(uploaded_file)
                 column_name_mapping = {
@@ -155,15 +164,6 @@ elif file_type_selection == "蓝电普通精度通道":
                 df['Current/mA'] = df['Current/mA'] * 1000
                 df['Capacity/mAh'] = df['Capacity/mAh'] * 1000
                 #df.to_csv(f'processed_{1}.txt', index=False, sep='\t')
-            
-            if (user_name == "MSY (for Ma Siyue)" and
-                date_input == datetime.now().strftime("%Y%m%d-%H") and
-                material == "LFP" and
-                remark == "RetiredBattery" and
-                batterynumber == "#1"):
-                file_base_name = f'modified_{uploaded_file.name}'
-            else:
-                file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
             
             download_button_key = f"download_button_{i}_{file_base_name}" 
             if format_choice == 'CSV':
