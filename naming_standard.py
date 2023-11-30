@@ -89,11 +89,11 @@ if file_type_selection == "蓝电高精度通道":
                 df['Current/mA'] = df['Current/mA'] * 1000
                 df['Capacity/mAh'] = df['Capacity/mAh'] * 1000
 
-            if (user_name == "MSY (for Ma Siyue)" and
-                date_input == datetime.now().strftime("%Y%m%d%H") and
-                material == "Positive electrode name like LFP" and
-                remark == "any remark without underline '_'" and
-                batterynumber == "like #1"):
+           if (user_name == "MSY (for Ma Siyue)" and
+                date_input == datetime.now().strftime("%Y%m%d-%H") and
+                material == "LFP" and
+                remark == "RetiredBattery" and
+                batterynumber == "#1"):
                 file_base_name = f'modified_{uploaded_file.name}'
             else:
                 file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
@@ -157,10 +157,10 @@ elif file_type_selection == "蓝电普通精度通道":
                 #df.to_csv(f'processed_{1}.txt', index=False, sep='\t')
             
             if (user_name == "MSY (for Ma Siyue)" and
-                date_input == datetime.now().strftime("%Y%m%d%H") and
-                material == "Positive electrode name like LFP" and
-                remark == "any remark without underline '_'" and
-                batterynumber == "like #1"):
+                date_input == datetime.now().strftime("%Y%m%d-%H") and
+                material == "LFP" and
+                remark == "RetiredBattery" and
+                batterynumber == "#1"):
                 file_base_name = f'modified_{uploaded_file.name}'
             else:
                 file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
