@@ -7,7 +7,7 @@ import chardet
 st.title("数据规范处理平台")
 # User inputs for file name
 st.text("所有内容都可选填")
-user_name = st.text_input("Enter your name (eg: MSY (for Ma Siyue))")
+user_name = st.text_input("Enter your name (eg: MSY (for Ma Siyue))", "MSY")
 date_input = st.text_input("Enter date (yyyymmddHH)", datetime.now().strftime("%Y%m%d-%H"))
 material = st.text_input("Enter positive electrode material (eg: LFP，NCM，NCA，NCM+NCA，LCO+LFPL, PE(未知))", "LFP")
 remark = st.text_input("Enter remarks (any remark without underline '_')", "RetiredBattery")
@@ -35,7 +35,7 @@ if file_type_selection == "蓝电高精度通道":
     uploaded_files = st.file_uploader("Choose an Excel or txt file", type=['xlsx','txt'], accept_multiple_files=True)
     if uploaded_files:
         for i, uploaded_file in enumerate(uploaded_files):
-            if (user_name == "MSY (for Ma Siyue)" and
+            if (user_name == "MSY" and
                 date_input == datetime.now().strftime("%Y%m%d-%H") and
                 material == "LFP" and
                 remark == "RetiredBattery" and
@@ -119,7 +119,7 @@ elif file_type_selection == "蓝电普通精度通道":
     uploaded_files = st.file_uploader("Choose an Excel or txt file", type=['xlsx','txt'],accept_multiple_files=True)
     if uploaded_files:
         for i,uploaded_file in enumerate(uploaded_files):
-            if (user_name == "MSY (for Ma Siyue)" and
+            if (user_name == "MSY" and
                 date_input == datetime.now().strftime("%Y%m%d-%H") and
                 material == "LFP" and
                 remark == "RetiredBattery" and
