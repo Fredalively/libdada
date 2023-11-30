@@ -7,11 +7,11 @@ import chardet
 st.title("数据规范处理平台")
 st.title("(所有文件名信息都是可选项，如无需求可不做更改~)")
 # User inputs for file name
-user_name = st.text_input("Enter your name","MSY (for Ma Siyue)")
-date_input = st.text_input("Enter date (yyyymmdd)", datetime.now().strftime("%Y%m%d-%H"))
-material = st.text_input("Enter positive electrode material", "Positive electrode name like LFP")
-remark = st.text_input("Enter remarks", "any remark without underline '_'")
-batterynumber = st.text_input("Enter battery number", "#1")
+user_name = st.text_input("Enter your name (eg: MSY (for Ma Siyue))")
+date_input = st.text_input("Enter date (yyyymmddHH)", datetime.now().strftime("%Y%m%d-%H"))
+material = st.text_input("Enter positive electrode material(eg: LFP，NCM，NCA，NCM+NCA，LCO+LFPL, PE(未知))", "LFP")
+remark = st.text_input("Enter remarks (any remark without underline '_')", "RetiredBattery")
+batterynumber = st.text_input("Enter battery number (eg: #1)", "#1")
 #file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
 
 
