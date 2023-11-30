@@ -5,6 +5,7 @@ import io
 import chardet
  
 st.title("数据规范处理平台")
+st.subtitle("(所有文件名信息都是可选项，如无需求可不做更改~)")
 # User inputs for file name
 user_name = st.text_input("Enter your name","MSY (for Ma Siyue)")
 date_input = st.text_input("Enter date (yyyymmdd)", datetime.now().strftime("%Y%m%d-%H"))
