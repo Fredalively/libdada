@@ -7,12 +7,13 @@ import chardet
 st.title("数据规范处理平台")
 
 # User inputs for file name
-user_name = st.text_input("Enter your name")
-date_input = st.text_input("Enter date (yyyymmdd)", datetime.now().strftime("%Y%m%d"))
-material = st.text_input("Enter positive electrode material")
-remark = st.text_input("Enter remarks")
-batterynumber = st.text_input("Enter battery number")
-file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
+user_name = st.text_input("Enter your name","MSY (for Ma Siyue)")
+date_input = st.text_input("Enter date (yyyymmdd)", datetime.now().strftime("%Y%m%d%H"))
+material = st.text_input("Enter positive electrode material", "Positive electrode name like LFP")
+remark = st.text_input("Enter remarks", "any remark without underline '_'")
+batterynumber = st.text_input("Enter battery number", "like #1")
+#file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
+
 
 # Desired column order
 desired_order = ["Cycle number", "Test time", "Step time", "Step number",
@@ -88,6 +89,14 @@ if file_type_selection == "蓝电高精度通道":
                 df['Current/mA'] = df['Current/mA'] * 1000
                 df['Capacity/mAh'] = df['Capacity/mAh'] * 1000
 
+            if (user_name == "MSY (for Ma Siyue)" and
+                date_input == datetime.now().strftime("%Y%m%d%H") and
+                material == "Positive electrode name like LFP" and
+                remark == "any remark without underline '_'" and
+                batterynumber == "like #1"):
+                file_base_name = f'modified_{uploaded_file.name}'
+            else:
+                file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
             download_button_key = f"download_button_{i}_{file_base_name}"    
             if format_choice == 'CSV':
                         #df.to_csv(f'{file_base_name}.csv', index=False)
@@ -146,7 +155,16 @@ elif file_type_selection == "蓝电普通精度通道":
                 df['Current/mA'] = df['Current/mA'] * 1000
                 df['Capacity/mAh'] = df['Capacity/mAh'] * 1000
                 #df.to_csv(f'processed_{1}.txt', index=False, sep='\t')
-
+            
+            if (user_name == "MSY (for Ma Siyue)" and
+                date_input == datetime.now().strftime("%Y%m%d%H") and
+                material == "Positive electrode name like LFP" and
+                remark == "any remark without underline '_'" and
+                batterynumber == "like #1"):
+                file_base_name = f'modified_{uploaded_file.name}'
+            else:
+                file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
+            
             download_button_key = f"download_button_{i}_{file_base_name}" 
             if format_choice == 'CSV':
                         #df.to_csv(f'{file_base_name}.csv', index=False)
