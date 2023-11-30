@@ -7,10 +7,10 @@ import chardet
 st.title("数据规范处理平台")
 # User inputs for file name
 user_name = st.text_input("Enter your name","MSY (for Ma Siyue)")
-date_input = st.text_input("Enter date (yyyymmdd)", datetime.now().strftime("%Y%m%d%H"))
+date_input = st.text_input("Enter date (yyyymmdd)", datetime.now().strftime("%Y%m%d-%H"))
 material = st.text_input("Enter positive electrode material", "Positive electrode name like LFP")
 remark = st.text_input("Enter remarks", "any remark without underline '_'")
-batterynumber = st.text_input("Enter battery number", "like #1")
+batterynumber = st.text_input("Enter battery number", "#1")
 #file_base_name = f"{user_name}_{date_input}_{material}_{remark}_Test{batterynumber}"
 
 
