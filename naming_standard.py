@@ -33,7 +33,7 @@ def keep_and_reorder_columns(dataframe, column_order):
 
 if file_type_selection == "蓝电高精度通道":
     uploaded_files = st.file_uploader("Choose an Excel or txt file", type=['xlsx','txt'], accept_multiple_files=True)
-    if uploaded_files：
+    if uploaded_files:
         for i, uploaded_file in enumerate(uploaded_files):
             if (user_name == "MSY (for Ma Siyue)" and
                 date_input == datetime.now().strftime("%Y%m%d-%H") and
